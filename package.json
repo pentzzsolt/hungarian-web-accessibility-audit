@@ -1,0 +1,18 @@
+{
+  "author": "Zsolt Pentz",
+  "bugs": {
+    "url": "https://github.com/pentzzsolt/hungarian-web-accessibility-audit/issues"
+  },
+  "description": "A longitudinal study of digital accessibility on the Hungarian web",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "homepage": "https://github.com/pentzzsolt/hungarian-web-accessibility-audit#readme",
+  "license": "CC-BY-4.0",
+  "name": "hungarian-web-accessibility-audit",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pentzzsolt/hungarian-web-accessibility-audit.git"
+  }
+}
