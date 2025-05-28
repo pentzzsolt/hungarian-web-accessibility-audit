@@ -4,6 +4,9 @@
     "url": "https://github.com/pentzzsolt/hungarian-web-accessibility-audit/issues"
   },
   "description": "A longitudinal study of digital accessibility on the Hungarian web",
+  "devDependencies": {
+    "pa11y": "^9.0.0"
+  },
   "engines": {
     "node": ">=22.16.0"
   },
