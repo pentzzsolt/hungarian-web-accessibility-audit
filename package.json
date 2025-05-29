@@ -19,6 +19,7 @@
     "url": "git+https://github.com/pentzzsolt/hungarian-web-accessibility-audit.git"
   },
   "scripts": {
+    "audit": "node scripts/audit.mjs",
     "process_tranco_list": "node scripts/process_tranco_list.mjs"
   }
 }
