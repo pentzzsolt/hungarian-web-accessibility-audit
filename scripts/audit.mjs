@@ -6,7 +6,7 @@ import pa11y from 'pa11y';
 async function readDomains() {
   const file = path.resolve('data/processed/hungarian_websites.txt');
   const content = await fs.readFile(file, 'utf8');
-  return content.split('\n');
+  return content.split('\n').map((domain, index) => ({ domain, rank: index + 1 }));
 }
 
 function pa11yWithTimeout(domain, options = {}, ms = 60000) {
@@ -42,15 +42,13 @@ const runOutputFile = path.resolve('results/runs', id + '.json');
 const summaryOutputFile = path.resolve('results/summaries', id + '.json');
 const domains = await readDomains();
 
-let rank = 0;
-
 await fs.mkdir(auditOutputDir);
 
-for (const domain of domains) {
+for (const data of domains) {
+  const { domain, rank } = data;
   console.log(`Auditing ${domain}…`);
   const timestamp = new Date().toISOString();
   let result;
-  rank++;
 
   try {
     result = await pa11yWithTimeout(domain, {
@@ -60,7 +58,7 @@ for (const domain of domains) {
     await fs.writeFile(path.resolve(auditOutputDir, domain + '.json'), JSON.stringify(result), 'utf8');
   } catch (error) {
     console.error(`Failed to audit ${domain}:`, error.message);
-    runData.failedAudits.push({ domain, error: { message: error.message } });
+    runData.failedAudits.push({ ...data, error: { message: error.message } });
     continue;
   }
   
