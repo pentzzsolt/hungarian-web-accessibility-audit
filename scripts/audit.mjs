@@ -17,9 +17,9 @@ function pa11yWithTimeout(domain, options = {}, ms = 60000) {
 }
 
 function getRunData() {
-  const timestamp = new Date().toISOString();
+  const startedAt = new Date().toISOString();
   const pa11yVersion = spawnSync('pa11y', ['--version'], { encoding: 'utf8' }).stdout.trim();
-  const id = timestamp.slice(0, 10);
+  const id = startedAt.slice(0, 10);
   
   return {
     id,
@@ -30,7 +30,7 @@ function getRunData() {
       platform: process.platform,
       version: process.version,
     },
-    timestamp,
+    startedAt,
   };
 }
 
@@ -82,5 +82,6 @@ for (const domain of domains) {
   console.log('Audit complete.', { domain, errors, warnings, notices });
 }
 
+runData.endedAt = new Date().toISOString();
 await fs.writeFile(runOutputFile, JSON.stringify(runData), 'utf8');
 await fs.writeFile(summaryOutputFile, JSON.stringify(summary), 'utf8');
