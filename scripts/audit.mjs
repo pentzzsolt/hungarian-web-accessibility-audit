@@ -61,7 +61,7 @@ for (const data of domains) {
     runData.failedAudits.push({ ...data, error: { message: error.message }, timestamp });
     continue;
   }
-  
+
   const { issues, pageUrl } = result;
   const errors = issues.filter(issue => issue.type === 'error').length;
   const warnings = issues.filter(issue => issue.type === 'warning').length;
