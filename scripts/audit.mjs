@@ -44,40 +44,69 @@ const domains = await readDomains();
 
 await fs.mkdir(auditOutputDir);
 
-for (const data of domains) {
-  const { domain, rank } = data;
-  console.log(`Auditing ${domain}…`);
-  const timestamp = new Date().toISOString();
-  let result;
-
-  try {
-    result = await pa11yWithTimeout(domain, {
-      includeNotices: true,
-      includeWarnings: true
-    });
-    await fs.writeFile(path.resolve(auditOutputDir, domain + '.json'), JSON.stringify(result), 'utf8');
-  } catch (error) {
-    console.error(`Failed to audit ${domain}:`, error.message);
-    runData.failedAudits.push({ ...data, error: { message: error.message }, timestamp });
-    continue;
-  }
+async function auditDomain(domain, auditOutputFile) {
+  const result = await pa11yWithTimeout(domain, {
+    includeNotices: true,
+    includeWarnings: true
+  });
+  await fs.writeFile(auditOutputFile, JSON.stringify(result), 'utf8');
 
   const { issues, pageUrl } = result;
   const errors = issues.filter(issue => issue.type === 'error').length;
   const warnings = issues.filter(issue => issue.type === 'warning').length;
   const notices = issues.filter(issue => issue.type === 'notice').length;
 
-  summary.push({
-    timestamp,
-    rank,
-    domain,
+  return {
     pageUrl,
     issues: issues.length,
     errors,
     warnings,
     notices
-  });
-  console.log('Audit complete.', { domain, errors, warnings, notices });
+  }
+}
+
+for (const data of domains) {
+  const { domain } = data;
+  const timestamp = new Date().toISOString();
+
+  try {
+    console.log(`Auditing ${domain}…`);
+    const result = await auditDomain(domain, path.resolve(auditOutputDir, domain + '.json'));
+    summary.push({
+      timestamp,
+      ...data,
+      ...result
+    });
+    console.log(`Audit complete for ${domain}.`);
+  } catch (error) {
+    console.error(`Failed to audit ${domain}:`, error.message);
+    runData.failedAudits.push({ ...data, error: { message: error.message }, timestamp });
+  }
+}
+
+if (runData.failedAudits.length > 0) {
+  const successfulAudits = []
+
+  for (const data of runData.failedAudits) {
+    const { domain, rank } = data;
+    const timestamp = new Date().toISOString();
+    
+    try {
+      console.log(`Auditing ${domain} for second time…`);
+      const result = await auditDomain(domain, path.resolve(auditOutputDir, domain + '.json'));
+      summary.push({
+        timestamp,
+        domain,
+        rank,
+        ...result
+      });
+      console.log(`Audit complete for ${domain} on second run.`);
+      successfulAudits.push(data);
+    } catch (error) {
+      console.error(`Retry failed for ${data.domain}:`, error.message);
+    }
+  }
+  runData.failedAudits = runData.failedAudits.filter(failed => !successfulAudits.some(success => success.domain === failed.domain));
 }
 
 runData.endedAt = new Date().toISOString();
