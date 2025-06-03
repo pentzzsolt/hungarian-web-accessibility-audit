@@ -58,7 +58,7 @@ for (const data of domains) {
     await fs.writeFile(path.resolve(auditOutputDir, domain + '.json'), JSON.stringify(result), 'utf8');
   } catch (error) {
     console.error(`Failed to audit ${domain}:`, error.message);
-    runData.failedAudits.push({ ...data, error: { message: error.message } });
+    runData.failedAudits.push({ ...data, error: { message: error.message }, timestamp });
     continue;
   }
   
