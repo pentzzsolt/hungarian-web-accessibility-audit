@@ -5,6 +5,7 @@
   },
   "description": "A longitudinal study of digital accessibility on the Hungarian web",
   "devDependencies": {
+    "exceljs": "^4.4.0",
     "pa11y": "^9.0.0"
   },
   "engines": {
@@ -20,6 +21,7 @@
   },
   "scripts": {
     "audit": "node scripts/audit.mjs",
+    "process_teaor_list": "node scripts/process_teaor25.mjs",
     "process_tranco_list": "node scripts/process_tranco_list.mjs"
   }
 }
