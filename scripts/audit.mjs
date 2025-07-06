@@ -4,19 +4,18 @@ import path from 'path';
 import pa11y from 'pa11y';
 import ExcelJS from 'exceljs';
 
-async function readDomains() {
-  const file = path.resolve('data/processed/hungarian_websites.xlsx');
+async function returnExcelColumn(file, options = { column: 'A', startRow: 1 }) {
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.readFile(file);
   const sheet = workbook.worksheets[0];
-  const domains = [];
-  for (let i = 2; i <= 1001; i++) {
-    const cell = sheet.getCell(`A${i}`).value;
+  const column = [];
+  for (let i = options.startRow; i <= sheet.rowCount; i++) {
+    const cell = sheet.getCell(`${options.column}${i}`).value;
     if (cell && typeof cell === 'string') {
-      domains.push({ domain: cell, rank: i - 1 });
+      column.push(cell);
     }
   }
-  return domains;
+  return column;
 }
 
 function pa11yWithTimeout(domain, options = {}, ms = 60000) {
@@ -50,7 +49,10 @@ const { id } = runData;
 const auditOutputDir = path.resolve('results/audits', id);
 const runOutputFile = path.resolve('results/runs', id + '.json');
 const summaryOutputFile = path.resolve('results/summaries', id + '.json');
-const domains = await readDomains();
+
+const allDomains = await returnExcelColumn(path.resolve('data/processed/hungarian_websites.xlsx'), { column: 'A', startRow: 2 });
+const failedDomains = await returnExcelColumn(path.resolve('data/processed/failed_domains.xlsx'));
+const domains = allDomains.filter(domain => !failedDomains.includes(domain)).map((domain, index) => ({ domain, rank: index + 1 }));
 
 await fs.mkdir(auditOutputDir);
 
