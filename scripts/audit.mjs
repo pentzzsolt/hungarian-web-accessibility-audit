@@ -2,11 +2,21 @@ import fs from 'fs/promises';
 import { spawnSync } from 'child_process';
 import path from 'path';
 import pa11y from 'pa11y';
+import ExcelJS from 'exceljs';
 
 async function readDomains() {
-  const file = path.resolve('data/processed/hungarian_websites.txt');
-  const content = await fs.readFile(file, 'utf8');
-  return content.split('\n').map((domain, index) => ({ domain, rank: index + 1 }));
+  const file = path.resolve('data/processed/hungarian_websites.xlsx');
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(file);
+  const sheet = workbook.worksheets[0];
+  const domains = [];
+  for (let i = 2; i <= 1001; i++) {
+    const cell = sheet.getCell(`A${i}`).value;
+    if (cell && typeof cell === 'string') {
+      domains.push({ domain: cell, rank: i - 1 });
+    }
+  }
+  return domains;
 }
 
 function pa11yWithTimeout(domain, options = {}, ms = 60000) {
