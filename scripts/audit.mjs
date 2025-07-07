@@ -52,7 +52,7 @@ const summaryOutputFile = path.resolve('results/summaries', id + '.json');
 
 const allDomains = await returnExcelColumn(path.resolve('data/processed/hungarian_websites.xlsx'), { column: 'A', startRow: 2 });
 const failedDomains = await returnExcelColumn(path.resolve('data/processed/failed_domains.xlsx'));
-const domains = allDomains.filter(domain => !failedDomains.includes(domain)).map((domain, index) => ({ domain, rank: index + 1 }));
+const domains = allDomains.map((domain, index) => ({ domain, rank: index + 1 })).filter(domain => !failedDomains.includes(domain.domain));
 
 await fs.mkdir(auditOutputDir);
 
