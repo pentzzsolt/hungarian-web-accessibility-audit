@@ -26,7 +26,7 @@ async function collectFailedDomains() {
   const sheet = workbook.addWorksheet('failed_domains');
 
   Array.from(failedDomains).forEach((domain, index) => {
-    sheet.getCell(`A${index}`).value = domain;
+    sheet.getCell(`A${index + 1}`).value = domain;
   });
 
   await workbook.xlsx.writeFile(outputPath);
