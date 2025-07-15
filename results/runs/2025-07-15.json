@@ -1,0 +1,1 @@
+{"id":"2025-07-15","failedAudits":[{"domain":"lebelier.hu","rank":413,"error":{"message":"Execution context was destroyed, most likely because of a navigation."},"timestamp":"2025-07-15T07:33:05.036Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-07-15T07:01:37.768Z","endedAt":"2025-07-15T08:07:44.965Z"}
