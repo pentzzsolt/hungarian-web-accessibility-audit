@@ -1,0 +1,1 @@
+{"id":"2025-07-29","failedAudits":[{"domain":"lovasok.hu","rank":252,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://lovasok.hu"},"timestamp":"2025-07-29T06:56:26.374Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-07-29T06:26:06.773Z","endedAt":"2025-07-29T07:28:25.190Z"}
