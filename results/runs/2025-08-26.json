@@ -1,0 +1,1 @@
+{"id":"2025-08-26","failedAudits":[{"domain":"kormanyhivatal.hu","rank":499,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://kormanyhivatal.hu"},"timestamp":"2025-08-26T08:54:17.338Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-08-26T08:33:13.650Z","endedAt":"2025-08-26T10:01:54.800Z"}
