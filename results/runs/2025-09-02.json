@@ -1,0 +1,1 @@
+{"id":"2025-09-02","failedAudits":[{"domain":"deninet.hu","rank":729,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://deninet.hu"},"timestamp":"2025-09-02T09:54:08.903Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-09-02T09:24:02.492Z","endedAt":"2025-09-02T10:06:37.200Z"}
