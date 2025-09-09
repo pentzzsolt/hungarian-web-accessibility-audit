@@ -1,0 +1,1 @@
+{"id":"2025-09-09","failedAudits":[{"domain":"egy.hu","rank":333,"error":{"message":"Timeout after 60 seconds"},"timestamp":"2025-09-09T07:17:03.573Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-09-09T07:02:09.907Z","endedAt":"2025-09-09T07:49:42.248Z"}
