@@ -1,0 +1,1 @@
+{"id":"2025-10-14","failedAudits":[{"domain":"met.hu","rank":476,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://met.hu"},"timestamp":"2025-10-14T07:57:28.892Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-10-14T07:34:46.904Z","endedAt":"2025-10-14T08:21:20.724Z"}
