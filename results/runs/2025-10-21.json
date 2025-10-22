@@ -1,0 +1,1 @@
+{"id":"2025-10-21","failedAudits":[{"domain":"studyinhungary.hu","rank":718,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://studyinhungary.hu"},"timestamp":"2025-10-21T07:31:31.814Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-10-21T07:02:19.165Z","endedAt":"2025-10-21T07:46:06.237Z"}
