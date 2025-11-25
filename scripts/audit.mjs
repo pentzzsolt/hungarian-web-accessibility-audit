@@ -96,15 +96,23 @@ for (const data of domains) {
   }
 }
 
-if (runData.failedAudits.length > 0) {
-  const successfulAudits = []
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+for (let attempt = 1; attempt <= 10 && runData.failedAudits.length > 0; attempt++) {
+  console.log(`Waiting 5 minutes before retry attempt #${attempt}…`);
+  await sleep(1000 * 60 * 5);
+
+  console.log(`Retry attempt #${attempt}…`);
+  const successfulAudits = [];
 
   for (const data of runData.failedAudits) {
     const { domain, rank } = data;
     const timestamp = new Date().toISOString();
-    
+
     try {
-      console.log(`Auditing ${domain} for second time…`);
+      console.log(`Auditing ${domain}…`);
       const result = await auditDomain(domain, path.resolve(auditOutputDir, domain + '.json'));
       summary.push({
         timestamp,
@@ -112,10 +120,10 @@ if (runData.failedAudits.length > 0) {
         rank,
         ...result
       });
-      console.log(`Audit complete for ${domain} on second run.`);
+      console.log(`Audit complete for ${domain}.`);
       successfulAudits.push(data);
     } catch (error) {
-      console.error(`Retry failed for ${data.domain}:`, error.message);
+      console.error(`Failed to audit ${domain}:`, error.message);
     }
   }
   runData.failedAudits = runData.failedAudits.filter(failed => !successfulAudits.some(success => success.domain === failed.domain));
