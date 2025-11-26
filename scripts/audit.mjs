@@ -2,21 +2,7 @@ import fs from 'fs/promises';
 import { spawnSync } from 'child_process';
 import path from 'path';
 import pa11y from 'pa11y';
-import ExcelJS from 'exceljs';
-
-async function returnExcelColumn(file, options = { column: 'A', startRow: 1 }) {
-  const workbook = new ExcelJS.Workbook();
-  await workbook.xlsx.readFile(file);
-  const sheet = workbook.worksheets[0];
-  const column = [];
-  for (let i = options.startRow; i <= sheet.rowCount; i++) {
-    const cell = sheet.getCell(`${options.column}${i}`).value;
-    if (cell && typeof cell === 'string') {
-      column.push(cell);
-    }
-  }
-  return column;
-}
+import { getSample } from './utils/get_sample.mjs';
 
 function pa11yWithTimeout(domain, options = {}, ms = 60000) {
   return Promise.race([
@@ -50,9 +36,7 @@ const auditOutputDir = path.resolve('results/audits', id);
 const runOutputFile = path.resolve('results/runs', id + '.json');
 const summaryOutputFile = path.resolve('results/summaries', id + '.json');
 
-const allDomains = await returnExcelColumn(path.resolve('data/processed/hungarian_websites.xlsx'), { column: 'A', startRow: 2 });
-const failedDomains = await returnExcelColumn(path.resolve('data/processed/failed_domains.xlsx'));
-const domains = allDomains.map((domain, index) => ({ domain, rank: index + 1 })).filter(domain => !failedDomains.includes(domain.domain));
+const domains = await getSample();
 
 await fs.mkdir(auditOutputDir);
 
