@@ -1,0 +1,1 @@
+{"id":"2025-12-02","failedAudits":[{"domain":"ventil.hu","rank":934,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://ventil.hu"},"timestamp":"2025-12-02T08:56:54.498Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-12-02T08:18:25.049Z","endedAt":"2025-12-02T09:51:14.968Z"}
