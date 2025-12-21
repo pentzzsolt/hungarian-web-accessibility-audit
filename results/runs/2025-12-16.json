@@ -1,0 +1,1 @@
+{"id":"2025-12-16","failedAudits":[{"domain":"rtlplusz.hu","rank":275,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://rtlplusz.hu"},"timestamp":"2025-12-16T08:59:20.593Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-12-16T08:46:31.811Z","endedAt":"2025-12-16T10:21:59.905Z"}
