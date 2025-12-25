@@ -1,0 +1,1 @@
+{"id":"2025-12-23","failedAudits":[{"domain":"keptelenseg.hu","rank":812,"error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://keptelenseg.hu"},"timestamp":"2025-12-23T09:28:17.920Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-12-23T08:54:42.291Z","endedAt":"2025-12-23T10:28:26.216Z"}
