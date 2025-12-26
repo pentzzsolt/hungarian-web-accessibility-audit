@@ -26,7 +26,6 @@
     "audit": "node scripts/audit.mjs",
     "cleanup_failed_audits": "node scripts/cleanup_failed_audits.mjs",
     "collect_failed_domains": "node scripts/collect_failed_domains.mjs",
-    "process_teaor_list": "node scripts/process_teaor25.mjs",
-    "process_tranco_list": "node scripts/process_tranco_list.mjs"
+    "process_teaor_list": "node scripts/process_teaor25.mjs"
   }
 }
