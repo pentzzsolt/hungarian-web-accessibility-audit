@@ -47,11 +47,11 @@ const updated_analytical_sample = analytical_sample.map(item => {
 
   return { ...item, 
     'Lineáris trend meredeksége': linearRegression(list).slope,
-    'Lineáris trend meredeksége (normalizált)': normalizedLinearRegression(list).slope,
+    'Lineáris trend meredeksége (normalizált)': normalizedLinearRegression(list)?.slope,
     'Átlagos akadálymentességi hibaszám': meanOfErrors,
     'Akadálymentességi hibaszám mediánja': median(list),
     'Szórás': stdOfErrors,
-    'Relatív szórás': stdOfErrors / meanOfErrors,
+    'Relatív szórás': meanOfErrors ? stdOfErrors / meanOfErrors : undefined,
     'Minimum érték': min,
     'Maximum érték': max,
     'Terjedelem': max - min,

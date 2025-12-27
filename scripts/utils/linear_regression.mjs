@@ -3,6 +3,8 @@
  * @property {number} slope
  */
 
+import { mean } from 'mathjs'
+
 /**
  * @type {(previousValue: number, currentValue: number) => number}
  */
@@ -30,10 +32,13 @@ export const linearRegression = y => {
 /**
  * Calculates the linear regression of normalized data.
  * @param {number[]} y - Array of y-values
- * @returns {RegressionResult} Object containing slope
+ * @returns {RegressionResult|undefined} Object containing slope
  */
 export const normalizedLinearRegression = y => {
-  const base = y[0];
-  const normalized = y.map(v => v / base);
-  return linearRegression(normalized);
+  const average = mean(y);
+  if (average === 0) return
+  else {
+    const normalized = y.map(v => v / average);
+    return linearRegression(normalized);
+  }
 }
