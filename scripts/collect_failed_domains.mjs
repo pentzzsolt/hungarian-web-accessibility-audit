@@ -1,35 +1,35 @@
-import fs from 'fs/promises';
-import path from 'path';
-import ExcelJS from 'exceljs';
+import { readdir, readFile, writeFile } from 'fs/promises';
+import { join, resolve } from 'path';
+import { parse } from 'csv-parse/sync'
+import { stringify } from 'csv-stringify/sync'
 
-const resultsDir = path.resolve('results/runs');
-const outputPath = path.resolve('data/processed/failed_domains.xlsx');
+const resultsDir = resolve('results/runs');
+const outputPath = resolve('data/processed/failed_domains.csv');
 
-async function collectFailedDomains() {
-  const failedDomains = new Set();
+const failedDomains = new Set();
 
-  const files = await fs.readdir(resultsDir);
-  for (const file of files) {
-    const content = await fs.readFile(path.join(resultsDir, file), 'utf8');
-    try {
-      const data = JSON.parse(content);
-      data.failedAudits.forEach(item => {
-        if (item.domain) failedDomains.add(item.domain);
-      });
-    } catch (error) {
-      console.error(`Error parsing JSON from file ${file}:`, error);
-      continue;
-    }
+const files = await readdir(resultsDir);
+for (const file of files) {
+  const content = await readFile(join(resultsDir, file), 'utf8');
+  try {
+    const data = JSON.parse(content);
+    data.failedAudits.forEach(item => {
+      if (item.domain) failedDomains.add(item.domain);
+    });
+  } catch (error) {
+    console.error(`Error parsing JSON from file ${file}:`, error);
+    continue;
   }
-
-  const workbook = new ExcelJS.Workbook();
-  const sheet = workbook.addWorksheet('failed_domains');
-
-  Array.from(failedDomains).forEach((domain, index) => {
-    sheet.getCell(`A${index + 1}`).value = domain;
-  });
-
-  await workbook.xlsx.writeFile(outputPath);
 }
 
-collectFailedDomains();
+const initial_sample_file_path = resolve('data/processed/initial_sample.csv'),
+      initial_sample_file = await readFile(initial_sample_file_path, 'utf8'),
+      initial_sample = parse(initial_sample_file, {
+        columns: true
+      });
+
+const failed_domain_list = initial_sample.filter(item => failedDomains.has(item.Domain))
+
+await writeFile(outputPath, stringify(failed_domain_list, {
+  header: true
+}), 'utf8');

@@ -1,6 +1,12 @@
-import path from 'path';
-import { returnExcelColumn } from './return_excel_column.mjs';
+import { readFile } from 'fs/promises';
+import { resolve } from 'path';
+import { parse } from 'csv-parse/sync'
 
 export async function getFailedDomains() {
-  return await returnExcelColumn(path.resolve('data/processed/failed_domains.xlsx'));
+  const failed_domains_file_path = resolve('data/processed/failed_domains.csv'),
+        failed_domains_file = await readFile(failed_domains_file_path, 'utf8'),
+        failed_domains = parse(failed_domains_file, {
+          columns: true
+        });
+  return failed_domains.map(domain => domain.Domain)
 }
