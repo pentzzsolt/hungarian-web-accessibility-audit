@@ -1,12 +1,12 @@
-import path from 'path';
-import { getExcludedDomains } from './get_excluded_domains.mjs';
-import { getFailedDomains } from './get_failed_domains.mjs';
-import { returnExcelColumn } from './return_excel_column.mjs';
+import { readFile } from 'fs/promises';
+import { resolve } from 'path';
+import { parse } from 'csv-parse/sync'
 
 export async function getSample() {
-  const allDomains = await returnExcelColumn(path.resolve('data/processed/hungarian_websites.xlsx'), { column: 'A', startRow: 2 });
-  const failedDomains = await getFailedDomains();
-  const excludedDomains = await getExcludedDomains();
-  const domains = allDomains.map((domain, index) => ({ domain, rank: index + 1 })).filter(domain => !failedDomains.includes(domain.domain) && !excludedDomains.includes(domain.domain));
-  return domains;
+  const sample_domains_file_path = resolve('data/processed/analytical_sample.csv'),
+        sample_domains_file = await readFile(sample_domains_file_path, 'utf8'),
+        sample_domains = parse(sample_domains_file, {
+          columns: true
+        });
+  return sample_domains.map(domain => domain.Domain)
 }
