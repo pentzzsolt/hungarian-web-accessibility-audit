@@ -26,7 +26,6 @@
     "audit": "node scripts/audit.mjs",
     "cleanup_failed_audits": "node scripts/cleanup_failed_audits.mjs",
     "collect_failed_domains": "node scripts/collect_failed_domains.mjs",
-    "postaudit": "node scripts/collect_failed_domains.mjs && node scripts/cleanup_failed_audits.mjs && node scripts/calculate_per_row_issue_stats.mjs",
-    "process_teaor_list": "node scripts/process_teaor25.mjs"
+    "postaudit": "node scripts/collect_failed_domains.mjs && node scripts/cleanup_failed_audits.mjs && node scripts/calculate_per_row_issue_stats.mjs"
   }
 }
