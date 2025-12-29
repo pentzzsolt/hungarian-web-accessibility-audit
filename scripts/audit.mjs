@@ -61,8 +61,7 @@ async function auditDomain(domain, auditOutputFile) {
   }
 }
 
-for (const data of domains) {
-  const { domain } = data;
+for (const domain of domains) {
   const timestamp = new Date().toISOString();
 
   try {
@@ -70,13 +69,13 @@ for (const data of domains) {
     const result = await auditDomain(domain, path.resolve(auditOutputDir, domain + '.json'));
     summary.push({
       timestamp,
-      ...data,
+      domain,
       ...result
     });
     console.log(`Audit complete for ${domain}.`);
   } catch (error) {
     console.error(`Failed to audit ${domain}:`, error.message);
-    runData.failedAudits.push({ ...data, error: { message: error.message }, timestamp });
+    runData.failedAudits.push({ domain, error: { message: error.message }, timestamp });
   }
 }
 
@@ -92,7 +91,7 @@ for (let attempt = 1; attempt <= 10 && runData.failedAudits.length > 0; attempt+
   const successfulAudits = [];
 
   for (const data of runData.failedAudits) {
-    const { domain, rank } = data;
+    const { domain } = data;
     const timestamp = new Date().toISOString();
 
     try {
@@ -101,7 +100,6 @@ for (let attempt = 1; attempt <= 10 && runData.failedAudits.length > 0; attempt+
       summary.push({
         timestamp,
         domain,
-        rank,
         ...result
       });
       console.log(`Audit complete for ${domain}.`);
