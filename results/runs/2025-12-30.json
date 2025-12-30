@@ -1,0 +1,1 @@
+{"id":"2025-12-30","failedAudits":[{"domain":"ardoboz.hu","error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://ardoboz.hu"},"timestamp":"2025-12-30T08:08:54.393Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2025-12-30T07:55:00.120Z","endedAt":"2025-12-30T09:28:26.507Z"}
