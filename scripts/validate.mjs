@@ -10,7 +10,6 @@ const analytical_sample = parse(analytical_sample_file, {
 })
 
 const analytical_sample_filtered = analytical_sample.filter(filledRow)
-console.log(analytical_sample_filtered.every(isRowValid))
 
 function filledRow(row) {
   const a = Boolean(row['Üzemeltető']) && row['Üzemeltető'].length > 0
@@ -28,8 +27,7 @@ function isRowValid(row) {
     new URL(row['Forrás (üzemeltető)'])
     b = true
   } catch (e) {
-    console.error(e, row['Forrás (üzemeltető)'])
-    return false
+    b = false
   }
   const c = date.test(row['Ellenőrzés dátuma (üzemeltető)'])
   const d = adoszam.test(row['Adószám'])
@@ -38,14 +36,59 @@ function isRowValid(row) {
     new URL(row['Forrás (adószám)'])
     e = true
   } catch (e) {
-    console.error(e, row['Forrás (adószám)'])
-    return false
+    e = false
   }
   const f = date.test(row['Ellenőrzés dátuma (adószám)'])
   const g = szamjel.test(row['Statisztikai számjel'])
   const h = date.test(row['Ellenőrzés dátuma (számjel)'])
 
-  const valid = (a && b && c && d && e && f && g && h)
-  if (!valid) console.error(row, a, b, c, d, e, f, g, h)
+  const [torzsszam1] = row['Adószám'].split('-');
+  const [torzsszam2] = row['Statisztikai számjel'].split(' ');
+
+  const i = torzsszam1 === torzsszam2;
+
+  const valid = (a && b && c && d && e && f && g && h && i)
+  if (!valid) {
+    console.error(`${row.Domain} is invalid.`)
+    if (!a) {
+      console.error(`Üzemeltető is ${row['Üzemeltető']}.`)
+    }
+    if (!b) {
+      console.error(`Forrás (üzemeltető) is ${row['Forrás (üzemeltető)']}.`)
+    }
+    if (!c) {
+      console.error(`Ellenőrzés dátuma (üzemeltető) is ${row['Ellenőrzés dátuma (üzemeltető)']}.`)
+    }
+    if (!d) {
+      console.error(`Adószám is ${row['Adószám']}.`)
+    }
+    if (!e) {
+      console.error(`Forrás (adószám) is ${row['Forrás (adószám)']}.`)
+    }
+    if (!f) {
+      console.error(`Ellenőrzés dátuma (adószám) is ${row['Ellenőrzés dátuma (adószám)']}.`)
+    }
+    if (!g) {
+      console.error(`Statisztikai számjel is ${row['Statisztikai számjel']}.`)
+    }
+    if (!h) {
+      console.error(`Ellenőrzés dátuma (számjel) is ${row['Ellenőrzés dátuma (számjel)']}.`)
+    }
+    if (!i) {
+      console.error(`Törzsszám mismatch in Adószám (${row['Adószám']}) and Statisztikai számjel(${row['Statisztikai számjel']}).`)
+    }
+  }
   return valid
 }
+
+const done = analytical_sample_filtered.length,
+      all = analytical_sample.length,
+      left = all - done,
+      percentage = Math.round(done / all * 100);
+
+if (analytical_sample_filtered.every(isRowValid)) {
+  console.log('All rows are valid.');
+}
+
+console.log(`${done} of ${all} done (${percentage}%), ${left} to go.`);
+
