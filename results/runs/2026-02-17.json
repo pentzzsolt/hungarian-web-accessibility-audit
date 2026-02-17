@@ -1,0 +1,1 @@
+{"id":"2026-02-17","failedAudits":[{"domain":"szallasguru.hu","error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://szallasguru.hu"},"timestamp":"2026-02-17T08:20:12.936Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2026-02-17T07:46:22.856Z","endedAt":"2026-02-17T09:30:55.404Z"}
