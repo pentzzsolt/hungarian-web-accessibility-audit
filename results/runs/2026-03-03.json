@@ -1,0 +1,1 @@
+{"id":"2026-03-03","failedAudits":[{"domain":"pina.hu","error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://pina.hu"},"timestamp":"2026-03-03T08:45:18.073Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2026-03-03T08:26:27.559Z","endedAt":"2026-03-03T10:09:03.678Z"}
