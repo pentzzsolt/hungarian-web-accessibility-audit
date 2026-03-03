@@ -1,0 +1,1 @@
+{"id":"2026-02-24","failedAudits":[{"domain":"marketworld.hu","error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://marketworld.hu"},"timestamp":"2026-02-24T10:03:10.355Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2026-02-24T09:08:32.665Z","endedAt":"2026-02-24T10:57:37.944Z"}
