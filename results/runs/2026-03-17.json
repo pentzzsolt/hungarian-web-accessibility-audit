@@ -1,0 +1,1 @@
+{"id":"2026-03-17","failedAudits":[{"domain":"fekmester.hu","error":{"message":"net::ERR_BLOCKED_BY_CLIENT at http://fekmester.hu"},"timestamp":"2026-03-17T09:06:26.775Z"}],"pa11yVersion":"9.0.0","process":{"arch":"arm64","platform":"darwin","version":"v22.16.0"},"startedAt":"2026-03-17T08:49:19.980Z","endedAt":"2026-03-17T10:28:48.573Z"}
