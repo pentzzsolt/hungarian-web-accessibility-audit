@@ -1,11 +1,19 @@
 Relatív rang,Eredeti rang,Domain,Indoklás
-37,24102,sxc.hu,Oldal megszűnt
-38,25011,mplayerhq.hu,Magánszemély üzemelteti
-73,44849,mafab.hu,Nem magyar cég üzemelteti
 106,54877,galeriasavaria.hu,Nem magyar cég üzemelteti
+107,54887,vadhajtasok.hu,Magánszemély üzemelteti
+112,55740,pornox.hu,Üzemeltető nem kideríthető
 118,57648,moviedrive.hu,Magánszemély üzemelteti
 119,57900,startapro.hu,Nem magyar cég üzemelteti
 126,59802,ujsagomat.hu,Nem magyar cég üzemelteti
+127,60087,csakporno.hu,Üzemeltető nem kideríthető
+128,60095,erotikaweb.hu,Üzemeltető nem kideríthető
+131,60146,trixxx.hu,Üzemeltető nem kideríthető
+135,60942,napiszar.hu,Üzemeltető nem kideríthető
+140,61858,hitelforum.hu,Üzemeltető nem kideríthető
+144,62465,filmi.hu,Üzemeltető nem kideríthető
+147,62737,csucsvideok.hu,Üzemeltető nem kideríthető
+149,63051,mosthir.hu,Üzemeltető nem kideríthető
+152,64004,keresztlabda.hu,Üzemeltető nem kideríthető
 174,73933,ugyfeleim.hu,Átirányít a szamlazz.hu oldalára
 175,73954,epenztargep.hu,Átirányít a szamlazz.hu oldalára
 176,73962,ugyfelezz.hu,Átirányít a szamlazz.hu oldalára
@@ -21,28 +29,49 @@ Relatív rang,Eredeti rang,Domain,Indoklás
 226,107479,ulloi129.hu,Magánszemély üzemelteti
 229,108370,hovege.hu,Nem magyar cég üzemelteti
 233,109952,argep.hu,Nem magyar cég üzemelteti
+234,110255,bikuci.hu,Üzemeltető nem kideríthető
 236,110849,ingyenpenztargep.hu,Átirányít a szamlazz.hu oldalára
 240,114181,dex.hu,Átirányít az index.hu oldalára
+268,124051,eoldal.hu,Üzemeltető nem kideríthető
 277,128512,playersroom.hu,Átirányít a dorko.hu oldalára
+281,129088,filmkatalogus.hu,Magánszemély üzemelteti
 291,131429,niif.hu,"A KIFÜ oldalára irányít át, ami megszűnt"
 295,132386,nyitva.hu,Nem magyar cég üzemelteti
 299,133531,jatekokxl.hu,Nem magyar cég üzemelteti
 301,134986,oroszhirek.hu,Üzemeltető nem kideríthető
 303,136339,valodihirek.hu,Nem magyar cég üzemelteti
+304,136504,pornoweb.hu,Üzemeltető nem kideríthető
+310,139163,angol-magyar-szotar.hu,Üzemeltető nem kideríthető
+318,141803,nemet-magyar-szotar.hu,Üzemeltető nem kideríthető
+322,142616,avxforum.hu,Magánszemély üzemelteti
+330,144167,animek.hu,Üzemeltető nem kideríthető
+335,145415,kihivott.hu,Üzemeltető nem kideríthető
+340,146036,porno1.hu,Üzemeltető nem kideríthető
 344,146741,vasarlocsapat.hu,Magánszemély üzemelteti
 367,162502,szie.hu,Átirányít az uni-mate.hu oldalára
+37,24102,sxc.hu,Oldal megszűnt
 377,170982,mai-nevnap.hu,Üzemeltető nem kideríthető
+379,171360,szex24.hu,Üzemeltető nem kideríthető
+38,25011,mplayerhq.hu,Magánszemély üzemelteti
 383,174252,napi.hu,Átirányít az economx.hu oldalára
+388,177352,mimi.hu,Üzemeltető nem kideríthető
 463,225172,mav-start.hu,Átirányít a mavcsoport.hu oldalára
+486,237415,bitcoinbazis.hu,Üzemeltető nem kideríthető
 506,245309,fehervarfc.hu,Átirányít a vidi.hu oldalára
+517,251491,619.hu,Üzemeltető nem kideríthető
+522,253311,egyediajandekotletek.hu,Üzemeltető nem kideríthető
 538,264015,citromail.hu,Nem magyar cég üzemelteti
 542,265916,kivaloarany.hu,Nem magyar cég üzemelteti
 550,268190,lutheran.hu,Átirányít az evangelikus.hu oldalára
 558,273809,ahrt.hu,Átirányít a 4igtavkozlesiholding.hu oldalára
 564,276583,legzocasino.hu,Nem magyar cég üzemelteti
 573,285054,bestmarkt.hu,A szervezet felszámolás alatt
+574,285084,kozterkep.hu,Magánszemély üzemelteti
 577,286788,around.hu,A szervezet megszünt
+594,293222,vargyasnekonyveles.hu,A szervezet megszünt
+600,295712,sorozatjunkie.hu,Magánszemély üzemelteti
 614,300683,heliumking.hu,Nem magyar cég üzemelteti
+616,301067,nyugdijforum.hu,Üzemeltető nem kideríthető
 654,314210,directone.hu,Átirányít és nem magyar cég üzemelteti
 671,322561,magyaridok.hu,A szervezet megszünt
 674,324779,totalbike.hu,Átirányít a totalcar.hu oldalára
@@ -52,8 +81,9 @@ Relatív rang,Eredeti rang,Domain,Indoklás
 704,339859,magyarfutball.hu,Magánszemély üzemelteti
 710,342277,forraidesign.hu,Magánszemély üzemelteti
 713,343491,mfdesign.hu,Oldal megszűnt
+73,44849,mafab.hu,Nem magyar cég üzemelteti
 730,351023,dns24.hu,Átirányít a rackhost.hu oldalára
-742,364967,kabelnet.hu,Nem kideríthető
+742,364967,kabelnet.hu,Üzemeltető nem kideríthető
 750,375568,telekomveszprem.hu,Átirányít a handballveszprem.hu oldalára
 758,378189,rejoy.hu,Nem magyar cég üzemelteti
 764,381448,kuplio.hu,Nem magyar cég üzemelteti
@@ -65,6 +95,7 @@ Relatív rang,Eredeti rang,Domain,Indoklás
 809,396861,autoalkatreszonline24.hu,Nem magyar cég üzemelteti
 819,399660,lampak.hu,Nem magyar cég üzemelteti
 823,401237,liked.hu,Üzemeltető nem kideríthető
+843,406564,hirlista.hu,Üzemeltető nem kideríthető
 847,407390,mutekifansub.hu,Magánszemély üzemelteti
 853,407986,retikul.hu,Átirányít a femina.hu oldalára
 856,408512,tonerpartners.hu,Nem magyar cég üzemelteti
