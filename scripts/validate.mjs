@@ -12,8 +12,8 @@ const analytical_sample = parse(analytical_sample_file, {
 const analytical_sample_filtered = analytical_sample.filter(filledRow)
 
 function filledRow(row) {
-  const a = Boolean(row['Üzemeltető']) && row['Üzemeltető'].length > 0
-  return a
+  const keys = ['Üzemeltető', 'Forrás (üzemeltető)', 'Ellenőrzés dátuma (üzemeltető)', 'Adószám', 'Forrás (adószám)', 'Ellenőrzés dátuma (adószám)', 'Statisztikai számjel', 'Ellenőrzés dátuma (számjel)']
+  return keys.every(key =>  Boolean(row[key]) && row[key].length > 0)
 }
 
 function isRowValid(row) {
