@@ -1,20 +1,33 @@
 import { readFile } from 'fs/promises';
 import { resolve } from 'path';
 import { parse } from 'csv-parse/sync'
+import { isNumber } from 'mathjs';
 
 const analytical_sample_file_path = resolve('data/processed/analytical_sample.csv');
 const analytical_sample_file = await readFile(analytical_sample_file_path, 'utf8');
 
 const analytical_sample = parse(analytical_sample_file, {
-  columns: true
+  columns: true,
+  trim: true
 })
 
-const analytical_sample_filtered = analytical_sample.filter(filledRow)
+const keys = Object.keys(analytical_sample[0])
 
-function filledRow(row) {
-  const keys = ['Üzemeltető', 'Forrás (üzemeltető)', 'Ellenőrzés dátuma (üzemeltető)', 'Adószám', 'Forrás (adószám)', 'Ellenőrzés dátuma (adószám)', 'Statisztikai számjel', 'Ellenőrzés dátuma (számjel)']
-  return keys.every(key =>  Boolean(row[key]) && row[key].length > 0)
-}
+const analytical_sample_filtered = analytical_sample.filter((row) => {
+  const filled = keys.every(key => {
+    const type = typeof row[key]
+    if (type === "string") {
+      return Boolean(row[key])
+    } else if (type === "number") {
+      return isNumber(row[key])
+    } else {
+      console.log(row)
+      return false
+    }
+  })
+  if (!filled) console.warn(`${row.Domain} is not filled.`)
+  return filled
+})
 
 function isRowValid(row) {
   const date = /^\d{4}-\d{2}-\d{2}$/
