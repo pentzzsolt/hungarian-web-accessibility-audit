@@ -34,7 +34,6 @@ function isRowValid(row) {
   const adoszam = /^\d{8}-\d{1}-\d{2}$/
   const szamjel = /^\d{8} \d{4} \d{3} \d{2}$/
 
-  const a = Boolean(row['Üzemeltető']) && row['Üzemeltető'].length > 0
   let b
   try {
     new URL(row['Forrás (üzemeltető)'])
@@ -60,12 +59,9 @@ function isRowValid(row) {
 
   const i = torzsszam1 === torzsszam2;
 
-  const valid = (a && b && c && d && e && f && g && h && i)
+  const valid = (b && c && d && e && f && g && h && i)
   if (!valid) {
     console.error(`${row.Domain} is invalid.`)
-    if (!a) {
-      console.error(`Üzemeltető is ${row['Üzemeltető']}.`)
-    }
     if (!b) {
       console.error(`Forrás (üzemeltető) is ${row['Forrás (üzemeltető)']}.`)
     }
