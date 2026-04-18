@@ -20,7 +20,7 @@ for (const dirent of dateDirs) {
     const filePath = join(datePath, file);
     const content = JSON.parse(await readFile(filePath, 'utf8'));
 
-    const issues = Array.isArray(content.issues) ? content.issues : [];
+    const issues = Array.isArray(content.issues) ? content.issues.filter(issue => issue.type === "error") : [];
     errors.push(...issues)
   }
 
